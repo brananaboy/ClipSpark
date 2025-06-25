@@ -1,0 +1,362 @@
+ /* Reset and base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #121212;
+  color: #fff;
+  overflow-y: scroll;
+}
+
+header {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-left h1 {
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  color: #bb86fc;
+  margin: 0;
+  cursor: default;
+}
+
+.header-nav button {
+  background: transparent;
+  border: 1.5px solid #bb86fc;
+  color: #bb86fc;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  margin-left: 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.header-nav button:hover {
+  background: #bb86fc;
+  color: #121212;
+}
+
+main {
+  max-width: 960px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.feed-centered {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #222;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 0 15px #bb86fcaa;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-weight: 700;
+  color: #bb86fc;
+}
+
+.modal-content form input,
+.modal-content form textarea {
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.modal-content form textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.modal-content form button {
+  background: #bb86fc;
+  border: none;
+  color: #121212;
+  font-weight: 700;
+  padding: 0.7rem;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-content form button:hover {
+  background: #9b63f9;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #bbb;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.error-msg {
+  color: #ff5555;
+  font-weight: 600;
+  min-height: 1.3rem;
+}
+
+.success-msg {
+  color: #55ff55;
+  font-weight: 600;
+  min-height: 1.3rem;
+}
+
+/* Profile modal larger */
+.profile-modal .modal-content {
+  max-width: 850px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Profile header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.profile-header img#profile-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #bb86fc;
+  cursor: pointer;
+}
+
+.profile-header h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: #bb86fc;
+  flex-grow: 1;
+  user-select: none;
+}
+
+#btn-change-pic {
+  padding: 0.5rem 1rem;
+  background: #bb86fc;
+  border: none;
+  color: #121212;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+
+#btn-change-pic:hover {
+  background: #9b63f9;
+}
+
+/* Profile tabs */
+.profile-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.profile-tabs .tab-btn {
+  padding: 0.6rem 1.3rem;
+  background: transparent;
+  border: 1.5px solid #bb86fc;
+  border-radius: 12px;
+  color: #bb86fc;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+
+.profile-tabs .tab-btn.active,
+.profile-tabs .tab-btn:hover {
+  background: #bb86fc;
+  color: #121212;
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Followers list */
+.followers-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.follower-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #1e1e1e;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  width: max-content;
+  user-select: none;
+}
+
+.follower-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1.5px solid #bb86fc;
+}
+
+/* Profile stats */
+.profile-stats {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-weight: 600;
+  color: #ccc;
+}
+
+/* Video box */
+.video-box {
+  background: #222;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px #bb86fc44;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+/* Video element */
+.video-box video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: black;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+}
+
+/* Controls under video */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.7rem 1rem;
+}
+
+.controls img.profile-pic {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid #bb86fc;
+  cursor: pointer;
+}
+
+.controls ion-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.25s;
+}
+
+.controls ion-icon:hover {
+  color: #bb86fc;
+}
+
+/* Views count with play icon */
+.view-count {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ccc;
+  user-select: none;
+}
+
+.view-count ion-icon {
+  font-size: 20px;
+  color: #bb86fc;
+}
+
+/* Video info overlay */
+.video-info {
+  padding: 0.8rem 1rem;
+}
+
+.video-info h3 {
+  margin: 0 0 0.3rem 0;
+  font-weight: 700;
+  color: #bb86fc;
+  user-select: text;
+}
+
+.video-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: #ddd;
+  user-select: text;
+}
+
+.more-btn {
+  color: #bb86fc;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.more-btn:hover {
+  text-decoration: underline;
+}
