@@ -5,5 +5,9 @@
     "express": "^5.1.0",
     "mongoose": "^8.16.0",
     "multer": "^2.0.1"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"No tests specified\""
   }
 }
