@@ -1,18 +1,14 @@
-name: ClipSpark
+name: Node.js CI
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -23,21 +19,9 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-
+          
       - name: Install dependencies
         run: npm install
 
-      - name: Build application
-        run: npm run build 
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './build' 
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Run tests
+        run: npm test
